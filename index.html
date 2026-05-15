@@ -1,0 +1,521 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graphics Academy LMS</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#f4f7fb;
+  color:#111;
+  overflow-x:hidden;
+}
+
+/* NAVBAR */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 3%;
+  background:#0f172a;
+  color:#fff;
+  position:sticky;
+  top:0;
+  z-index:999;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:700;
+}
+
+.nav-links{
+  display:flex;
+  list-style:none;
+}
+
+.nav-links li a{
+  color:#fff;
+  text-decoration:none;
+  padding:10px 15px;
+  display:block;
+}
+
+.nav-links li a:hover{
+  background:#1e293b;
+  border-radius:6px;
+}
+
+/* TITLE */
+.course-title{
+  text-align:center;
+  font-size:30px;
+  font-weight:700;
+  margin:25px 0;
+  color:#0f172a;
+}
+
+/* MAIN LAYOUT */
+.course-layout{
+  display:grid;
+  grid-template-columns:260px 2.5fr 240px;
+  gap:20px;
+  padding:25px 2%;
+  width:100%;
+  align-items:start;
+}
+
+/* PLAYLIST */
+.playlist{
+  background:#fff;
+  border-radius:18px;
+  padding:20px;
+  height:82vh;
+  overflow-y:auto;
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.playlist h3{
+  margin-bottom:15px;
+  font-size:20px;
+}
+
+.video-item{
+  padding:14px;
+  margin-bottom:10px;
+  border-radius:10px;
+  cursor:pointer;
+  background:#f1f5f9;
+  transition:0.3s;
+  font-size:15px;
+}
+
+.video-item:hover{
+  background:#2563eb;
+  color:#fff;
+  transform:translateX(3px);
+}
+
+.video-item.active{
+  background:#2563eb;
+  color:#fff;
+}
+
+/* VIDEO BOX */
+.video-box{
+  background:#fff;
+  border-radius:18px;
+  padding:25px;
+  width:100%;
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.video-box h2{
+  margin-bottom:18px;
+  font-size:24px;
+}
+
+.video-wrapper{
+  position:relative;
+  width:100%;
+  padding-bottom:56.25%;
+  border-radius:14px;
+  overflow:hidden;
+  background:#000;
+}
+
+.video-wrapper iframe{
+  position:absolute;
+  width:100%;
+  height:100%;
+  border:none;
+  left:0;
+  top:0;
+}
+
+/* RIGHT PANEL */
+.right-panel{
+  background:#fff;
+  border-radius:18px;
+  padding:20px;
+  height:82vh;
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.right-panel h3{
+  margin-bottom:15px;
+  font-size:20px;
+}
+
+.right-panel ul{
+  list-style:none;
+}
+
+.right-panel ul li{
+  padding:12px 0;
+  border-bottom:1px solid #eee;
+  font-size:15px;
+}
+
+/* NEXT BUTTON */
+.next-btn{
+  margin-top:20px;
+  padding:14px 22px;
+  background:#2563eb;
+  color:#fff;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  font-size:16px;
+  transition:0.3s;
+}
+
+.next-btn:hover{
+  background:#1d4ed8;
+  transform:translateY(-2px);
+}
+
+/* FOOTER */
+.footer{
+  background:#0f172a;
+  color:#fff;
+  padding:60px 3% 25px;
+  margin-top:60px;
+}
+
+.footer-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:40px;
+}
+
+.footer-logo{
+  font-size:24px;
+  font-weight:700;
+  margin-bottom:15px;
+}
+
+.footer p{
+  color:#cbd5e1;
+  line-height:1.7;
+  font-size:14px;
+}
+
+.footer h3{
+  margin-bottom:18px;
+  font-size:18px;
+}
+
+.footer-links{
+  list-style:none;
+}
+
+.footer-links li{
+  margin-bottom:10px;
+}
+
+.footer-links li a{
+  color:#cbd5e1;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.footer-links li a:hover{
+  color:#3b82f6;
+  padding-left:5px;
+}
+
+.footer-social{
+  display:flex;
+  gap:12px;
+  margin-top:15px;
+}
+
+.footer-social a{
+  width:42px;
+  height:42px;
+  background:#1e293b;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  color:#fff;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.footer-social a:hover{
+  background:#2563eb;
+  transform:translateY(-3px);
+}
+
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,0.1);
+  margin-top:40px;
+  padding-top:20px;
+  text-align:center;
+  color:#94a3b8;
+  font-size:14px;
+}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .course-layout{
+    grid-template-columns:1fr;
+  }
+
+  .playlist,
+  .right-panel{
+    height:auto;
+  }
+}
+
+@media(max-width:768px){
+
+  .navbar{
+    padding:15px 4%;
+  }
+
+  .course-layout{
+    padding:15px 3%;
+  }
+
+  .video-box{
+    padding:18px;
+  }
+
+  .course-title{
+    font-size:24px;
+    padding:0 10px;
+  }
+
+}
+
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header>
+  <nav class="navbar">
+    <div class="logo">Freelancer - Rakib - Hasan</div>
+
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Courses</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- TITLE -->
+<div class="course-title">
+  Graphics Design Full Course Videos
+</div>
+
+<!-- COURSE SECTION -->
+<section class="course-layout">
+
+  <!-- LEFT PLAYLIST -->
+  <div class="playlist">
+    <h3>Adobe Illustrator Playlist</h3>
+    <div id="videoList"></div>
+  </div>
+
+  <!-- CENTER VIDEO -->
+  <div class="video-box">
+
+    <h2 id="videoTitle">Part 1</h2>
+
+    <div class="video-wrapper">
+      <iframe
+        id="videoFrame"
+        src="https://drive.google.com/file/d/1ZJlb5zlrng_TaKnRVyYwhnEDy31HY2Sa/preview"
+        allow="autoplay"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <button class="next-btn" id="nextButton">
+      Next Video ▶
+    </button>
+
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="right-panel">
+
+    <h3>UI/UX Design Course</h3>
+
+    <ul>
+      <li>Web Design Basics</li>
+      <li>Color Theory</li>
+      <li>Layout Design</li>
+      <li>Typography</li>
+    </ul>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <div>
+      <div class="footer-logo">Freelancer - Rakib - Hasan</div>
+
+      <p>
+        Professional online graphics design learning platform.
+        Learn Adobe Illustrator, Photoshop, UI/UX Design and more
+        from anywhere in Bangladesh.
+      </p>
+
+      <div class="footer-social">
+        <a href="#">F</a>
+        <a href="#">I</a>
+        <a href="#">Y</a>
+      </div>
+    </div>
+
+    <div>
+      <h3>Quick Links</h3>
+
+      <ul class="footer-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Courses</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Popular Courses</h3>
+
+      <ul class="footer-links">
+        <li><a href="#">Adobe Illustrator</a></li>
+        <li><a href="#">Adobe Photoshop</a></li>
+        <li><a href="#">UI/UX Design</a></li>
+        <li><a href="#">Logo Design</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Contact Info</h3>
+
+      <ul class="footer-links">
+        <li>Email: support@gmail.com</li>
+        <li>Phone: +880 1234-567890</li>
+        <li>Available: 24/7 Support</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Graphics Academy LMS. All Rights Reserved.
+  </div>
+
+</footer>
+
+<script>
+
+const videoList = document.getElementById("videoList");
+const videoFrame = document.getElementById("videoFrame");
+const videoTitle = document.getElementById("videoTitle");
+const nextButton = document.getElementById("nextButton");
+
+const videos = [
+  {
+    title: "Adobe Illustrator - Part 1",
+    link: "https://drive.google.com/file/d/1rgRqIM7tbj4wgjMoYeeqrtrXSRRoiKk4/preview"
+  },
+  {
+    title: "Adobe Illustrator - Part 2",
+    link: "https://drive.google.com/file/d/1uvYkAA_c4p5qI27QNnJ4_6eAEw3Ky5Hu/preview"
+  },
+  {
+    title: "Adobe Illustrator - Part 3",
+    link: "https://drive.google.com/file/d/1XkP5guQjsZNG2_fVsdxkKL5KkIKIFlcJ/preview"
+  },
+  {
+    title: "Adobe Illustrator - Part 4",
+    link: "https://drive.google.com/file/d/194_RheceAhChWreJg6dLnkqfQEkgck9m/preview"
+  },
+  {
+    title: "Adobe Illustrator - Part 5",
+    link: "https://drive.google.com/file/d/1ZJlb5zlrng_TaKnRVyYwhnEDy31HY2Sa/preview"
+  }
+];
+
+let currentVideo = 0;
+
+function loadVideo(index){
+
+  currentVideo = index;
+
+  videoFrame.src = videos[index].link;
+  videoTitle.innerText = videos[index].title;
+
+  document.querySelectorAll(".video-item")
+    .forEach(el => el.classList.remove("active"));
+
+  const activeItem = document.querySelector(`[data-index='${index}']`);
+
+  if(activeItem){
+    activeItem.classList.add("active");
+  }
+}
+
+videos.forEach((video,index)=>{
+
+  const div = document.createElement("div");
+
+  div.className = "video-item";
+  div.innerText = video.title;
+  div.setAttribute("data-index", index);
+
+  if(index===0){
+    div.classList.add("active");
+  }
+
+  div.onclick = ()=>{
+    loadVideo(index);
+  };
+
+  videoList.appendChild(div);
+
+});
+
+loadVideo(0);
+
+nextButton.onclick = ()=>{
+
+  currentVideo++;
+
+  if(currentVideo >= videos.length){
+    currentVideo = 0;
+  }
+
+  loadVideo(currentVideo);
+
+};
+
+</script>
+
+</body>
+</html>
+```
+
